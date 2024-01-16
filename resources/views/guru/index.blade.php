@@ -12,22 +12,28 @@
 <br>
 <table class="table table-hover">
     <tr>
+        <th>No</th>
         <th>Nama</th>
         <th>Email</th>
         <th>No Telepon</th>
         <th>alamat</th>
+        <th>barang</th>
+        <th>satuan</th>
         <th>aksi</th>
     </tr>
-    @foreach($guru as $g)
+    @foreach($guru as $g => $item)
     <tr>
-        <td>{{$g->nama}}</td>
-        <td>{{$g->email}}</td>
-        <td>{{$g->no_telp}}</td>
-        <td>{{$g->alamat}}</td>
+    <td>{{$g+1}}</td>
+        <td>{{$item->nama}}</td>
+        <td>{{$item->email}}</td>
+        <td>{{$item->no_telp}}</td>
+        <td>{{$item->alamat}}</td>
+        <td>{{$item->nama_barang}}</td>
+        <td>{{$item->nama_satuan}}</td>
         <td> 
         <div class="btn-group" role="group" aria-label="Basic example">    
-            <a class="btn btn-warning" href="/guru/{{$g->id}}/edit">edit</a>
-             <form action="/guru/{{$g->id}}" method="POST">
+            <a class="btn btn-warning" href="{{ route('guru.edit', ['id' => $item->id, 'id_barang' => $item->id_barang]) }}">edit</a>
+             <form action="/guru/{{$item->id}}" method="POST">
                 @csrf
                 @method('delete')
                 <input class="btn btn-danger" type="submit" value="Delete">

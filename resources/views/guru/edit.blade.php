@@ -10,7 +10,7 @@
                 <div class="card-body">
 
 <form action="/guru/{{$guru->id}}" method="POST">
-    @method('put')
+    @method('PUT')
 
     @csrf
 
@@ -31,6 +31,16 @@
     <label for="exampleInputEmail1" class="form-label">alamat</label>
     <textarea class="form-control" name="alamat" rows="10" >{{$guru->alamat}}</textarea>
     </div>
+
+    <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">barang</label>
+    <select name="barang" class="form-select @error('barang') is-invalid @enderror">
+      <option value="">pilih barang</option>
+      @foreach ($barang as $barang)
+      <option value="{{$barang->id_barang}}">{{$barang->nama_barang}}</option>
+      @endforeach
+    </select>
+  </div>
 
     <input class="btn btn-primary" type="submit" name="submit" value="simpan">
 </form>

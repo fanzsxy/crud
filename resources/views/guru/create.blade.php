@@ -29,6 +29,16 @@
     <textarea class="form-control" name="alamat" rows="10" ></textarea>
     </div>
 
+    <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">barang</label>
+    <select name="barang" class="form-select @error('barang') is-invalid @enderror">
+      <option value="">barang</option>
+      @foreach ($barang as $guru)
+      <option value="{{$guru->id_barang}}">{{$guru->nama_barang}}</option>
+      @endforeach
+    </select>
+  </div>
+
     <input class="btn btn-primary" type="submit" name="submit" value="simpan">
 </form>
 
